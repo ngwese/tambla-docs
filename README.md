@@ -22,7 +22,7 @@ rows. rows have 2-16 triggers with velocity, duration, and chance values per
 step. holding down a key generates notes at the given pitch
 with the trigger pattern in the first (top most) row. each subsequent key held,
 begins generation based on the trigger pattern in next lower row. note generation
-begins from the current playhead position instead of the beginning of the row
+starts from the current playhead position instead of the beginning of the row
 ensuring the overall rhythmic structure is maintained.
 
 the four playheads scanning each row are synchronized to a common clock.
