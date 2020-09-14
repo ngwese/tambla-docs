@@ -17,7 +17,7 @@ pairs well with:
 
 ## overview
 
-tambla is tool to explore polyrhythms and syncopation. patterns consist of four
+_tambla_ affords exploration of polyrhythms and syncopation. patterns consist of four
 rows. rows have 2-16 triggers with velocity, duration, and chance values per
 step. holding down a key generates notes at the given pitch
 with the trigger pattern in the first (top most) row. each subsequent key held,
@@ -33,13 +33,13 @@ in exponential progression (slow then speeding up).
 
 ## interface
 
-the tambla ui consists of three pages in addition to a number of mappable
+the _tambla_ ui consists of three pages in addition to a number of mappable
 parameters exposed in the _norns_ menu.
 
 ![](img/tambla-page-structure.png)
 
-the **play** page is displayed when the script starts. conceptually the pages
-are laid out horizontally. several controls are common across all pages:
+the **play** page is displayed when the script first starts. conceptually the pages
+are laid out horizontally. several controls have a common theme across all pages:
 
 | control | purpose |
 |---------|---------|
@@ -120,16 +120,50 @@ values are zero.
 
 ### macro page
 
+the **macro** page, designated by the `M` in the lower right corner, provides
+slot level pattern operations (and more in the future).
+
 ![](img/tambla-macro-m.png)
+
+| control | purpose |
+| ------- | ------- |
+| `ENC1`  | slot select |
+| `ENC2` | select operation |
+| `ENC3` | select operation target (only used for some operations) |
+| `K3` | perform operation |
+
+| operations | details |
+| ---------- | ------- |
+| `copy` | copies the selected slot (pattern) into a buffer |
+| `paste` | pastes the previously copied pattern into selected slot. the paste operation can be used repeatedly to copy one pattern into multiple slots |
+| `pattern load:` | load the pattern selected via `ENC3` into the current slot by pressing `KEY3`. if the `...` name is selected the standard norns file select ui is shown allowing patterns in other directories to be loaded |
+| `save pattern:` | save the selected slot pattern out to the name selected by `ENC3`. pressing `KEY3` will **_overwrite_** the named pattern. to save a pattern with a new name select `...` as the name and the standard norns text entry ui is shown for specifying the name |
+
+**note:** there is currently no visible indication that the operation was
+performed nor any error displayed if a pattern could not be loaded. future
+versions of the script will hopefully improve this area.
 
 ## structure
 
+_tambla's_ model consists of several structures, specifically:
+
+- **scene** - current only one scene is supported, its existence is not
+  currently exposed
+  - **slot** - scenes have 4 slots, each containing a pattern
+    - **pattern** - a pattern has 4 rows of triggers
+      - **row** - 2-16 triggers with playhead parameters
+
+it is important to note that while the playhead parameters get saved and loaded
+as part of a **pattern** all other input, output, and note generation settings
+live at the **scene** level. **scene** level parameters can be saved as a `PSET`.
+
+the following diagram provides a high level view of how midi events flow through
+the various stages. incoming midi notes event will be completely consumed by the
+generation and transformation stages. other midi events such as pitch bend and
+cc will be passed through to the main output with their channel set to the main
+(output) channel.
+
 ![](img/tambla-event-flow.png)
-
-- slots
-- rows
-- routing
-
 
 ## parameters
 
