@@ -233,11 +233,5 @@ output destination.
 | midi input | midi input device number; see `SYSTEM > DEVICES > MIDI` |
 | midi output (main) | main midi output device number; see `SYSTEM > DEVICES > MIDI` |
 | midi output channel | channel number for notes passing through the main output |
-| output | _midi_ or _polysub_ |
+| output | _polyperc_ or _midi_ |
 | output logging | turn on debug logging for generated notes visible in the _maiden_ REPL. may cause problems with fast clocks and dense trigger patterns |
-
-
-
-**note:** the initial unmarked set of parameters belong to the `polysub` engine and the
-second unmarked set are from the `halfsecond` library. neither of these is
-heavily utilized and may be replaced in the future.
