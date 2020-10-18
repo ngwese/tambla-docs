@@ -23,7 +23,7 @@ step. holding down a key generates notes at the given pitch
 with the trigger pattern in the first (top most) row. each subsequent key held,
 begins generation based on the trigger pattern in next lower row. note generation
 starts from the current playhead position instead of the beginning of the row
-ensuring the overall rhythmic structure is maintained.
+ensuring the overall rhythmic structure is maintained unless note based sync it chosen.
 
 the four playheads scanning each row are synchronized to a common clock.
 individual rows can divide down the clock for linear phasing effects or bend the
@@ -186,6 +186,7 @@ the initial set of parameters control the note generation and transformation log
 | length mod | when on trigger duration with affect generated note duration |
 | input hold | when on incoming notes are held after release, additional notes accumulate as long as at least one key is held down continuously. after all keys have been released the next key press will start another accumulation |
 | transpose | shift notes post generation up or down by semitones |
+| sync | synchronize `all` rows to the same clock phase or reset a given row playhead when a `note` is played |
 
 #### `random >`
 
