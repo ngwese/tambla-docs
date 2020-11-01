@@ -4,10 +4,14 @@
 arpeggiator with bendable playheads
 
 requirements:
-- **norns** (20mmdd or later)
+- **norns** (201029 or later)
 - **midi keyboard** - for note input, preferably with velocity sensitivity
 - **midi controller** (encouraged) - for mapping performance parameters to dedicated
   controls
+
+optional:
+- **grid** - note input
+- **arc** - various performance controls
 
 pairs well with:
 - multi-channel MIDI-CV converters
@@ -182,6 +186,7 @@ the initial set of parameters control the note generation and transformation log
 | active pattern | the currently selected/playing slot |
 | chance | when on chance is considered when determining if a trigger should fire (defaults to off) |
 | chance boost | added to trigger chance values when determining if a trigger will fire. chance boost of 1.0 has the same effect as turning chance off |
+| velocity scale | multiplys outgoing note velocity by this value |
 | velocity mod | when on trigger velocity is scaled by incoming note velocity |
 | length mod | when on trigger duration with affect generated note duration |
 | input hold | when on incoming notes are held after release, additional notes accumulate as long as at least one key is held down continuously. after all keys have been released the next key press will start another accumulation |
@@ -236,3 +241,20 @@ output destination.
 | midi output channel | channel number for notes passing through the main output |
 | output | _polyperc_ or _midi_ |
 | output logging | turn on debug logging for generated notes visible in the _maiden_ REPL. may cause problems with fast clocks and dense trigger patterns |
+
+## grid
+
+_experimental, subject to change_
+
+a varibright grid (assigned to the first slot in the `SYSTEM > DEVICES > GRID` menu) can be used for live note input. notes generated via the grid have velocity values of 127. notes are laid out on the grid similar to a linnstrument via an adaptation of a library originally written by [neauoire](https://llllllll.co/u/neauoire).
+
+## arc
+
+_experimental, subject to change_
+
+arc4 connected to the first arc device slot provides direct access to a few parameters
+| n | details |
+| 1 | row select in **play** and **edit** pages, equivalent to using `K1 + ENC1` |
+| 2 | drives the `pw` parameter for `polyperc` with fixed 20 second slew time |
+| 3 | drives the `velocity scale` parameter with a fixed 8 second slew time |
+| 4 | drives the `chance boost` parameter with a fixed 1/2 second slew time |
