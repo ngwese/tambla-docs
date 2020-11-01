@@ -254,6 +254,7 @@ _experimental, subject to change_
 
 arc4 connected to the first arc device slot provides direct access to a few parameters
 | n | details |
+| - | ------- |
 | 1 | row select in **play** and **edit** pages, equivalent to using `K1 + ENC1` |
 | 2 | drives the `pw` parameter for `polyperc` with fixed 20 second slew time |
 | 3 | drives the `velocity scale` parameter with a fixed 8 second slew time |
