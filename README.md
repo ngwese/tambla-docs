@@ -30,7 +30,7 @@ starts from the current playhead position instead of the beginning of the row
 ensuring the overall rhythmic structure is maintained unless note based sync it chosen.
 
 the four playheads scanning each row are synchronized to a common clock.
-individual rows can divide down the clock for linear phasing effects or bend the
+individual rows can divide down the clock for linear phasing effects or bending the
 clock or both. bend values < 1.0 result in the playhead progressing in a
 logarithmic fashion (fast then slowing down) where as bend values > 1.0 result
 in exponential progression (slow then speeding up).
