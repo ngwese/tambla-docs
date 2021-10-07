@@ -4,7 +4,7 @@
 arpeggiator with bendable playheads
 
 requirements:
-- **norns** (21?????? or later)
+- **norns** (210927 or later)
 - **midi keyboard** - for note input, preferably with velocity sensitivity
 - **midi controller** (encouraged) - for mapping performance parameters to dedicated
   controls
